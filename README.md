@@ -5,10 +5,12 @@ This was created as a code challenge.
 Unity 5
 
 ## Controlls
-Player Left: UP - W
-             Down - S
-             Freeze Ball - Tab
+- Player Left:
+  - UP - W
+  - Down - S
+  - Freeze Ball - Tab
              
-Player Right: Up Arrow
-              Down Arrow
-              Freeze Ball: Return
+- Player Right: 
+  - Up Arrow
+  - Down Arrow
+  - Freeze Ball: Return
