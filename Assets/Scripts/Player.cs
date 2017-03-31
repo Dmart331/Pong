@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Setting the speed of the movment of the player. 
         float inputSpeed = 0f;
         float speed = 10f;
         if (player == ePlayer.Left)
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
         {
             inputSpeed = Input.GetAxisRaw("PlayerRight");
         }
+        // Move the thing
         transform.position += new Vector3(0f, 0f, inputSpeed * speed * Time.deltaTime);
     }
 

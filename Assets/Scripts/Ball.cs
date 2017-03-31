@@ -16,15 +16,20 @@ public class Ball : MonoBehaviour {
     // Update is called once per frame
     private void FixedUpdate()
     {
-       
+       //Freeze ball functions Below. Return is player right Tab is player left.
             if (Input.GetKeyDown("return"))
         {
+            //Stop moving
             rb3D.isKinematic = true;
+            //Set parent to capsule
             rb3D.transform.parent = GameObject.Find("PlayerLeft").transform;
         }
             if (Input.GetKeyUp("return")){
+            //Carry on
             rb3D.isKinematic = false;
+            //Remove the parent
             rb3D.transform.parent = null;
+            //Add the force
             rb3D.AddForce(negitiveImpulse, ForceMode.Impulse);
             
             

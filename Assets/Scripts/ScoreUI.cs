@@ -24,6 +24,7 @@ public class ScoreUI : MonoBehaviour {
     {
         if(scorePlayerLeft == 3)
         {
+            //load game over page
             SceneManager.LoadScene("GameOver");
         }
         else if (scorePlayerRight == 3)

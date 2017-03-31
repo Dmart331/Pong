@@ -8,6 +8,7 @@ public class PlayerBorder : MonoBehaviour {
     // Use this for initialization
     private void OnCollisionEnter(Collision collision)
     {
+        // Setting the ball to variable. Using this to increase the score based on the side it hit
        Ball ball = collision.gameObject.GetComponent<Ball>();
         if(ball != null)
         {
