@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour {
     public Rigidbody rb3D;
     private bool isInPlayerTrigger = false;
     private bool isStopped = false;
-    private string player;
 
     // Use this for initialization
     void Start () {
@@ -20,38 +19,50 @@ public class Ball : MonoBehaviour {
     private void FixedUpdate()
     {
         if (Input.GetKeyDown("return")){
-            player = "left";
-            if (isInPlayerTrigger && player == "left") {
-                rb3D.isKinematic = true;
+            if (isInPlayerTrigger && GameObject.Find("PlayerLeft")) {
+
+                stopMoving();
+
                 rb3D.transform.parent = GameObject.Find("PlayerLeft").transform;
             }
         }
 
         if (Input.GetKeyUp("return") && isStopped)
         {
-            rb3D.isKinematic = false;
-            rb3D.transform.parent = null;
+            startMoving();
             rb3D.AddForce(negitiveImpulse, ForceMode.Impulse);
         }
 
         if (Input.GetKeyDown("tab"))
         {
-            player = "right";
-            if (isInPlayerTrigger && player == "right")
+            if (isInPlayerTrigger && GameObject.Find("PlayerRight"))
             {
-                rb3D.isKinematic = true;
+                stopMoving();
+
                 rb3D.transform.parent = GameObject.Find("PlayerRight").transform;
             }
         }
 
         if (Input.GetKeyUp("tab") && isStopped)
         {
-            rb3D.isKinematic = false;
-            rb3D.transform.parent = null;
+            startMoving();
             rb3D.AddForce(initialImpulse, ForceMode.Impulse);
         }
 
 
+    }
+
+    private void stopMoving()
+    {
+        rb3D.isKinematic = true;
+        isStopped = true;
+    }
+
+    private void startMoving()
+    {
+        rb3D.isKinematic = false;
+        rb3D.transform.parent = null;
+        isStopped = false;
     }
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
@@ -59,14 +70,12 @@ public class Ball : MonoBehaviour {
 
             //Stop moving
         isInPlayerTrigger = true;
-        isStopped = true;
 
     }
 
     private void OnTriggerExit(Collider other)
     {
         isInPlayerTrigger = false;
-        isStopped = false;
     }
 
 }
